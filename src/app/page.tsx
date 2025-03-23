@@ -1,57 +1,33 @@
 import { Container } from "@/components/Container";
-import { Hero } from "@/components/Hero";
-import { SectionTitle } from "@/components/SectionTitle";
-import { Benefits } from "@/components/Benefits";
-import { Video } from "@/components/Video";
-import { Testimonials } from "@/components/Testimonials";
-import { Faq } from "@/components/Faq";
-import { Cta } from "@/components/Cta";
-
-import { benefitOne, benefitTwo } from "@/components/data";
+import Link from "next/link";
 export default function Home() {
   return (
-    <Container>
-      <Hero />
-      <SectionTitle
-        preTitle="Nextly Benefits"
-        title=" Why should you use this landing page"
-      >
-        Nextly is a free landing page & marketing website template for startups
-        and indie projects. Its built with Next.js & TailwindCSS. And its
-        completely open-source.
-      </SectionTitle>
+    <Container className="flex flex-wrap">
+      <div className="flex items-center w-full lg:w-1/2">
+        <div className="max-w-2xl ml-8 mb-8">
+          <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
+            Brick and Beam Lofts
+          </h1>
+          <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
+            Brick and Beam Lofts in Columbus Park offer a unique blend of
+            historic charm and modern living. With exposed brick walls and
+            wooden beams, these lofts provide a warm and inviting atmosphere.
+            Located in the heart of the city, they are perfect for those who
+            value both style and convenience.
+          </p>
 
-      <Benefits data={benefitOne} />
-      <Benefits imgPos="right" data={benefitTwo} />
-
-      <SectionTitle
-        preTitle="Watch a video"
-        title="Learn how to fullfil your needs"
-      >
-        This section is to highlight a promo or demo video of your product.
-        Analysts says a landing page with video has 3% more conversion rate. So,
-        don&apos;t forget to add one. Just like this.
-      </SectionTitle>
-
-      <Video videoId="fZ0D0cnR88E" />
-
-      <SectionTitle
-        preTitle="Testimonials"
-        title="Here's what our customers said"
-      >
-        Testimonials is a great way to increase the brand trust and awareness.
-        Use this section to highlight your popular customers.
-      </SectionTitle>
-
-      <Testimonials />
-
-      <SectionTitle preTitle="FAQ" title="Frequently Asked Questions">
-        Answer your customers possible questions here, it will increase the
-        conversion rate as well as support or chat requests.
-      </SectionTitle>
-
-      <Faq />
-      <Cta />
+          <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
+            <Link
+              href="/schedule"
+              target="_blank"
+              rel="noopener"
+              className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 rounded-md "
+            >
+              Schedule a tour
+            </Link>
+          </div>
+        </div>
+      </div>
     </Container>
   );
 }
