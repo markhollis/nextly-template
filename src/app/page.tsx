@@ -2,32 +2,50 @@ import { Container } from "@/components/Container";
 import Link from "next/link";
 export default function Home() {
   return (
-    <Container className="flex flex-wrap">
-      <div className="flex items-center w-full lg:w-1/2">
-        <div className="max-w-2xl ml-8 mb-8">
-          <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
-            Brick and Beam Lofts
-          </h1>
-          <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
-            Brick and Beam Lofts in Columbus Park offer a unique blend of
-            historic charm and modern living. With exposed brick walls and
-            wooden beams, these lofts provide a warm and inviting atmosphere.
-            Located in the heart of the city, they are perfect for those who
-            value both style and convenience.
-          </p>
+    <div className="relative w-full h-screen">
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        muted
+        loop
+        autoPlay
+        playsInline
+      >
+        <source src="/img/video.mp4" type="video/mp4" />
+        <track
+          src="/path/to/captions.vtt"
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
+        Your browser does not support the video tag.
+      </video>
+      <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
 
-          <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
-            <Link
-              href="/schedule"
-              target="_blank"
-              rel="noopener"
-              className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 rounded-md "
-            >
-              Schedule a tour
-            </Link>
+      <Container className="relative justify-center items-center z-20 flex flex-wrap h-3/4">
+        <div className="flex items-center items-center text-center w-full lg:w-1/2">
+          <div className="">
+            <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
+              Nestled in the heart of Columbus Park, Brick & Beam Lofts is where
+              industrial heritage meets modern living. Our brand is rooted in
+              timeless craftsmanship—drawing inspiration from the raw beauty of
+              exposed brick, steel beams, and the rich character of historic
+              urban architecture.
+            </p>
+            <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300"></p>
+
+            <div className="flex flex-col justify-center space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
+              <Link
+                href="/"
+                target="_blank"
+                rel="noopener"
+                className="px-8 py-4 text-lg font-medium text-center text-white bg-primary rounded-md "
+              >
+                SCHEDULE A TOUR
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
 }

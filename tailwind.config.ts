@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
-const defaultTheme = require("tailwindcss/defaultTheme");
-const colors = require("tailwindcss/colors");
+import defaultTheme from "tailwindcss/defaultTheme";
+import colors from "tailwindcss/colors";
 
 const config: Config = {
   mode: "jit",
@@ -16,11 +16,17 @@ const config: Config = {
     extend: {
       colors: {
         trueGray: colors.neutral,
+        primary: "#721313", // Deep Brick Red
+        secondary: "#1E1E1E", // Dark Industrial Black
+        accent: "#A67C52", // Warm Wood Tone
+        background: "#F5F3EF", // Light Loft-style Neutral
+        text: "#222222", // Strong Black for Readability
+        muted: "#6B6B6B", // Muted Gray for Subtext
       },
     },
     fontFamily: {
-      sans: ["Inter", ...defaultTheme.fontFamily.sans],
-      stock: [defaultTheme.fontFamily.sans],
+      sans: ["Mulish", ...defaultTheme.fontFamily.sans],
+      stock: defaultTheme.fontFamily.sans,
     },
   },
   variants: {

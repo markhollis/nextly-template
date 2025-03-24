@@ -14,7 +14,45 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id        String   @id @default(uuid())  
+  email     String   @unique
+  name      String?
+  password  String   // Hashed password
+  role      Role     @default(USER)
+  bookings  Booking[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  USER   // Regular resident
+  ADMIN  // Admin who manages bookings
+}
+
+model Unit {
+  id          String   @id @default(uuid())  
+  number      String   @unique  // e.g., "101", "B202"
+  sqft        Int      // Square footage of the unit
+  bedrooms    Int      // Number of bedrooms
+  bathrooms   Float    // Number of bathrooms (e.g., 1.5)
+  rent        Float    // Monthly rent price
+  amenities   String[] // List of amenities (e.g., ["Balcony", "Washer/Dryer", "Gym Access"])
+  leaseTerms  Int[]    // Available lease terms in months (e.g., [6, 12, 18])
+  available   Boolean  @default(true)
+  bookings    Booking[]
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Booking {
+  id          String   @id @default(uuid())  
+  userId      String   
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  unitId      String   
+  unit        Unit     @relation(fields: [unitId], references: [id], onDelete: Cascade)
+  bookedFrom  DateTime
+  bookedUntil DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
